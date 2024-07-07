@@ -7,6 +7,12 @@ edition = "2021"
 tray-item = "0.10.0"
 rdev = "0.5.1"
 chrono = "0.4"
+mysql = "*"
+tokio = { version = "*", features = ["full"] }
+percent-encoding = "*"
+uuid = { version = "1.3.0", features = ["v4"] }
+csv = "1.1"
+dotenv = "0.15.0"
 
 [build-dependencies]
 embed-resource = "2.3"
