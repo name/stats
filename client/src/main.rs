@@ -2,7 +2,7 @@ use std::sync::mpsc;
 use tray_item::{IconSource, TrayItem};
 use rdev::{listen, Event};
 use std::thread;
-use chrono::{DateTime, Utc, Duration};
+use chrono::{DateTime, Duration, Utc};
 use std::time::SystemTime;
 use std::fs::{File, OpenOptions};
 use std::io::{Write, Seek, SeekFrom};
@@ -36,7 +36,7 @@ fn parse_event(event: &Event, total_distance: &mut f64) -> Option<String> {
             let feet = *total_distance * 0.0005;
             if feet >= 1.0 {
                 let log_entry = format!("{},{},MouseMove,{:.6}", uuid, timestamp, feet);
-                *total_distance = 0.0; // Reset the total distance
+                *total_distance = 0.0;
                 Some(log_entry)
             } else {
                 None
@@ -143,7 +143,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let import_tx = tx.clone();
     tokio::spawn(async move {
-        let mut interval = time::interval(Duration::minutes(1).to_std().unwrap());
+        let mut interval = time::interval(Duration::minutes(5).to_std().unwrap());
         loop {
             interval.tick().await;
             import_tx.send(Message::ImportAndReset).unwrap();
