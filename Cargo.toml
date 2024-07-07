@@ -1,0 +1,12 @@
+[package]
+name = "stats"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tray-item = "0.10.0"
+rdev = "0.5.1"
+chrono = "0.4"
+
+[build-dependencies]
+embed-resource = "2.3"
