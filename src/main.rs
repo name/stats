@@ -23,7 +23,7 @@ fn parse_event(event: &Event, total_distance: &mut f64) -> Option<String> {
     match &event.event_type {
         rdev::EventType::MouseMove { x: _, y: _ } => {
             *total_distance += 1.0;
-            let feet = *total_distance * 0.000868044619422571;
+            let feet = *total_distance * 0.0005;
             if feet >= 1.0 {
                 let log_entry = format!("{},MouseMove,{:.6}", timestamp, feet);
                 *total_distance = 0.0; // Reset the total distance
